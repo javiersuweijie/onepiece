@@ -1,0 +1,24 @@
+name: Simulation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  simulation-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: "go.mod"
+
+      - name: Download Modules
+        run: go mod download
+
+      - name: Simulation Test
+        run: go test ./app -run=TestFullAppSimulation -mod=readonly -Enabled=true -NumBlocks=100 -BlockSize=50 -Commit=true -Period=0 -v -timeout=24h

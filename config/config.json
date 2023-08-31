@@ -1,0 +1,11 @@
+{
+  "chain_id": "piece-1",
+  "app_name": "onepiece",
+  "address_prefix": "pirate",
+  "bond_denom": "berry",
+  "bond_supply": "1000000000",
+  "unbonding_time": "1814400s",
+  "max_validators": 130,
+  "min_commission_rate": "0",
+  "accounts": []
+}
